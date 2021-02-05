@@ -38,7 +38,7 @@ const Form = () => {
 
       <div className="fields">
         <div className="field">
-          <button className="ui primary button fluid">CREATE</button>
+          <button className="ui primary basic button fluid">CREATE</button>
         </div>
       </div>
     </div>
