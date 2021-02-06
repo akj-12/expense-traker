@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ExpenseTrackerContext } from "../../context/context";
 
 const ExpenseList = () => {
+  const globalState = useContext(ExpenseTrackerContext);
+  console.log(globalState);
   const transactions = [
-    { id: 1, category: "income", amount: "2000", date: "12-13-1-2019" },
-    { id: 2, category: "expense", amount: "200", date: "12-13-1-2019" },
-    { id: 2, category: "income", amount: "240", date: "12-13-1-2019" },
+    {
+      id: 1,
+      type: "Income",
+      category: "income",
+      amount: "2000",
+      date: "12-13-1-2019",
+    },
+    {
+      id: 2,
+      type: "Income",
+      category: "expense",
+      amount: "200",
+      date: "12-13-1-2019",
+    },
+    {
+      id: 2,
+      type: "Income",
+      category: "income",
+      amount: "240",
+      date: "12-13-1-2019",
+    },
   ];
   return (
     <div className="container">
@@ -39,7 +60,12 @@ const ExpenseList = () => {
                 </div>
               </div>
               <div className="right floated column">
-                <button className="ui circular google plus icon button">
+                <button
+                  className="ui circular google plus icon button"
+                  onClick={(e) => {
+                    console.log("clicked trash delete");
+                  }}
+                >
                   <i className="trash icon"></i>
                 </button>
               </div>

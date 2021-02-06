@@ -38,7 +38,14 @@ const Form = () => {
 
       <div className="fields">
         <div className="field">
-          <button className="ui primary basic button fluid">CREATE</button>
+          <button
+            className="ui primary basic button fluid"
+            onClick={(e) => {
+              console.log("Button clicked");
+            }}
+          >
+            CREATE
+          </button>
         </div>
       </div>
     </div>
