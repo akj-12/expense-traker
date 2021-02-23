@@ -1,26 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import DropDown from "../dropdown/DropDown";
 
 const Form = () => {
+  const type = ["Income", "Expense"];
+  const category = ["Business", "Salary"];
+
+  // state for dropdown
+  const [expenseType, setExpenseType] = useState(type[0]);
+  const [categoryType, setCategoryType] = useState(category[0]);
   return (
     <div className="ui form equal width">
       <div className="fields">
         {/* Type */}
         <div className="field">
-          <label htmlFor="type">Type</label>
-          <select className="ui dropdown">
-            <option value="">Gender</option>
-            <option value="1">Male</option>
-            <option value="0">Female</option>
-          </select>
+          <DropDown
+            items={type}
+            selectedItem={expenseType}
+            onChangeSelectedItem={setExpenseType}
+            selectedTitle="Type"
+          />
         </div>
         {/* Category */}
         <div className="field">
-          <label htmlFor="type">Category</label>
-          <select className="ui dropdown">
-            <option value="">Gender</option>
-            <option value="1">Male</option>
-            <option value="0">Female</option>
-          </select>
+          <DropDown
+            items={category}
+            selectedItem={categoryType}
+            onChangeSelectedItem={setCategoryType}
+            selectedTitle="Category"
+          />
         </div>
       </div>
       <div className="fields">

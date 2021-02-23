@@ -15,7 +15,7 @@ const Card = ({ title }) => {
         </div>
         <div className="image">
           {/* <Doughnut data="" /> */}
-          <img src="https://pixabay.com/get/gbd22df6fb514b52fc7fe9992f43fcfb3be162d62a1ee33208122d56660f4df5502d54a5096f7d322624a66aec2a2dd732efbcf7100716d3739eed57b6d3a47d2_640.jpg" />
+          <img src={process.env.PUBLIC_URL + "chart.png"} />
         </div>
       </div>
     </div>
