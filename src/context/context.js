@@ -1,12 +1,24 @@
 import React, { createContext, useReducer } from "react";
+import ContextReducer from "./ContextReducer";
 
-const initializeState = [];
+const initialState = [];
 
-export const ExpenseTrackerContext = createContext(initializeState);
+export const ExpenseTrackerContext = createContext(initialState);
 export const Provider = ({ children }) => {
-  // const [state, dispatch] = useReducer(reducer, initialState);
+  const [transactions, dispatch] = useReducer(ContextReducer, initialState);
+
+  // ations creator
+  const deleteTransaction = (id) => {
+    dispatch({ type: "DELETE_TRANSACTION", payload: id });
+  };
+  const addTransaction = (transaction) => {
+    dispatch({ type: "ADD_TRANSACTION", payload: transaction });
+  };
+
   return (
-    <ExpenseTrackerContext.Provider value={{ appName: "Expense Tracker" }}>
+    <ExpenseTrackerContext.Provider
+      value={{ deleteTransaction, addTransaction, transactions }}
+    >
       {children}
     </ExpenseTrackerContext.Provider>
   );

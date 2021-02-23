@@ -2,31 +2,32 @@ import React, { useContext } from "react";
 import { ExpenseTrackerContext } from "../../context/context";
 
 const ExpenseList = () => {
-  const globalState = useContext(ExpenseTrackerContext);
-  console.log(globalState);
-  const transactions = [
-    {
-      id: 1,
-      type: "Income",
-      category: "income",
-      amount: "2000",
-      date: "12-13-1-2019",
-    },
-    {
-      id: 2,
-      type: "Income",
-      category: "expense",
-      amount: "200",
-      date: "12-13-1-2019",
-    },
-    {
-      id: 2,
-      type: "Income",
-      category: "income",
-      amount: "240",
-      date: "12-13-1-2019",
-    },
-  ];
+  const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
+
+  // const transactions = [
+  //   {
+  //     id: 1,
+  //     type: "Income",
+  //     category: "income",
+  //     amount: "2000",
+  //     date: "12-13-1-2019",
+  //   },
+  //   {
+  //     id: 2,
+  //     type: "Income",
+  //     category: "expense",
+  //     amount: "200",
+  //     date: "12-13-1-2019",
+  //   },
+  //   {
+  //     id: 2,
+  //     type: "Income",
+  //     category: "income",
+  //     amount: "240",
+  //     date: "12-13-1-2019",
+  //   },
+  // ];
+  console.log(transactions);
   return (
     <div className="container">
       <div
@@ -36,7 +37,7 @@ const ExpenseList = () => {
           overflowX: "hidden",
           whiteSpace: "nowrap",
           maxHeight: "100px",
-          height: "90px",
+          // height: "90px",
         }}
       >
         <div className="ui grid ">
@@ -47,11 +48,11 @@ const ExpenseList = () => {
                   <div className="item">
                     <i
                       className={`dollar icon large ${
-                        transaction.category === "income" ? "green" : "red"
+                        transaction.expenseType === "Income" ? "green" : "red"
                       }`}
                     ></i>
                     <div className="content">
-                      <div className="header">{transaction.category}</div>
+                      <div className="header">{transaction.expenseType}</div>
                       <div className="description">
                         ${transaction.amount} - {transaction.date}
                       </div>
@@ -62,8 +63,8 @@ const ExpenseList = () => {
               <div className="right floated column">
                 <button
                   className="ui circular google plus icon button"
-                  onClick={(e) => {
-                    console.log("clicked trash delete");
+                  onClick={() => {
+                    deleteTransaction(transaction.id);
                   }}
                 >
                   <i className="trash icon"></i>
