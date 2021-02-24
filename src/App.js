@@ -12,13 +12,13 @@ const App = () => {
       style={{ marginTop: "100px " }}
     >
       <div className="column">
-        <Card title="INCOME" />
+        <Card title="Income" />
       </div>
       <div className="column">
         <Main />
       </div>
       <div className="column">
-        <Card title="EXPENSE" />
+        <Card title="Expense" />
       </div>
     </div>
   );

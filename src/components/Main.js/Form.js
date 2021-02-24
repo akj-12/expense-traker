@@ -2,16 +2,23 @@ import React, { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ExpenseTrackerContext } from "../../context/context";
 import DropDown from "../dropdown/DropDown";
+import {
+  incomeCategories,
+  expenseCategories,
+} from "../../constants/Categories";
 
 const Form = () => {
-  const type = ["Income", "Expense"];
-  const category = ["Business", "Salary"];
+  const type = [{ type: "Income" }, { type: "Expense" }];
+  // const category = ["Business", "Salary"];
 
   // state for dropdown
-  const [expenseType, setExpenseType] = useState(type[0]);
-  const [categoryType, setCategoryType] = useState(category[0]);
+  const [expenseType, setExpenseType] = useState(type[0].type);
+  const selectedCategories =
+    expenseType === "Income" ? incomeCategories : expenseCategories;
+
+  const [categoryType, setCategoryType] = useState("");
   const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date("yyyy-MM-dd").toLocaleString());
   const { addTransaction } = useContext(ExpenseTrackerContext);
 
   // handler
@@ -32,7 +39,7 @@ const Form = () => {
       date,
       id: uuidv4(),
     };
-    console.log(transaction);
+
     addTransaction(transaction);
     // setInitialState remains 1:12:55
   };
@@ -51,7 +58,7 @@ const Form = () => {
         {/* Category */}
         <div className="field">
           <DropDown
-            items={category}
+            items={selectedCategories}
             selectedItem={categoryType}
             onChangeSelectedItem={setCategoryType}
             selectedTitle="Category"

@@ -27,7 +27,7 @@ const ExpenseList = () => {
   //     date: "12-13-1-2019",
   //   },
   // ];
-  console.log(transactions);
+
   return (
     <div className="container">
       <div

@@ -26,17 +26,18 @@ const DropDown = ({
   }, []);
 
   const item = items.map((item) => {
-    if (selectedItem === item) {
+    if (selectedItem === item.type) {
       return null;
     }
+
     return (
       <div
         className="item"
         // data-value={item}
-        key={item}
-        onClick={() => onChangeSelectedItem(item)}
+        key={item.type}
+        onClick={() => onChangeSelectedItem(item.type)}
       >
-        {item}
+        {item.type}
       </div>
     );
   });
