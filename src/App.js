@@ -15,7 +15,7 @@ const App = () => {
         <Card title="Income" />
       </div>
       <div className="column">
-        <Main />
+        <Main title="Expense" />
       </div>
       <div className="column">
         <Card title="Expense" />

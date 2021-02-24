@@ -16,9 +16,8 @@ const Card = ({ title }) => {
           <div className="header massive">Rs. {total}</div>
           <div className="ui divider"></div>
         </div>
-        <div className="image">
+        <div className="">
           <Doughnut data={chartData} />
-          {/* <img src={process.env.PUBLIC_URL + "chart.png"} /> */}
         </div>
       </div>
     </div>

@@ -13,18 +13,24 @@ const useTransactions = (title) => {
   const transactionPerType = transactions.filter(
     (t) => t.expenseType === title
   );
+  const incomeBalance = transactions
+    .filter((t) => t.expenseType === "Income")
+    .reduce((acc, currVal) => (acc += currVal.amount), 0);
+  const expenseBalance = transactions
+    .filter((t) => t.expenseType === "Expense")
+    .reduce((acc, currVal) => (acc += currVal.amount), 0);
+
+  const balance = incomeBalance - expenseBalance;
+
   const total = transactionPerType.reduce(
     (acc, currVal) => (acc += currVal.amount),
     0
   );
-  console.log(total);
+
   const categories = title === "Income" ? incomeCategories : expenseCategories;
 
-  //   console.log(transactions, total, categories);
-  //   console.log(transactionPerType);
   transactionPerType.forEach((t) => {
     const category = categories.find((c) => c.type === t.categoryType);
-    // console.log(category);
     if (category) {
       category.amount += t.amount;
     }
@@ -42,8 +48,7 @@ const useTransactions = (title) => {
     labels: filteredCategories.map((c) => c.type),
   };
 
-  //   console.log(chartData);
-  return { total, chartData };
+  return { total, chartData, balance };
 };
 
 export default useTransactions;
